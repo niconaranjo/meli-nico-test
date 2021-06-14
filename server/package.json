@@ -1,0 +1,23 @@
+{
+  "name": "meli-server",
+  "version": "1.0.0",
+  "description": "Creation of a server side that makes querys to meli's server and handles the data",
+  "main": "main.js",
+  "author": "Nicolas Naranjo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cross-env": "5.0.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "server": "nodemon ./main.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "jest": "^27.0.4",
+    "nodemon": "^2.0.7"
+  }
+}

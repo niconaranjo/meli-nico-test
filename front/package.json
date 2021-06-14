@@ -1,0 +1,11 @@
+{
+  "name": "meli-front",
+  "version": "1.0.0",
+  "description": "Creation of the front end, here is the visualization of a page that handles the data from the server",
+  "main": "main.js",
+  "author": "Nicolas Naranjo",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "5.0.5"
+  }
+}
