@@ -26,7 +26,7 @@ Make sure you use this versions or higher versions to run the project
 ---
 #### File Structure
 Here is the structure of the project:
-
+```
 ├── README.md
 ├── [/front/](./server/README.md)
 │  ├── main.js
@@ -66,3 +66,4 @@ Here is the structure of the project:
 │  ├── /views/
 │  │  └── 404.html
 └── yarn.lock
+```
