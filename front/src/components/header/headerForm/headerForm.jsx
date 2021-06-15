@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MeliData from '../../../contentData/contentData';
 
-import searchLogo from '../../../public/images/ic_Search.png';
+import searchLogo from '../../../assets/ic_Search.png';
 
-function headerForm({ action, onSubmit, inputValue, onChange, className }) {
+function headerForm({
+  action, onSubmit, inputValue, onChange, className,
+}) {
   return (
     <form
       className={className}

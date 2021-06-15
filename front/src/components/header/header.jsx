@@ -4,9 +4,9 @@ import classes from './header.module.css';
 
 import HeaderForm from './headerForm/headerForm';
 import API_URL from '../../contentData/apiUrlData';
-import logo from '../../public/images/logo_mercado_libre.jpg';
+import logo from '../../assets/logo_mercado_libre.jpg';
 
-function HeaderController({ submit, inputValue, changeInputValue }) {
+function HeaderContent({ submit, inputValue, changeInputValue }) {
   return (
     <div className={classes.headerContainer} role="banner">
       <img
@@ -25,10 +25,10 @@ function HeaderController({ submit, inputValue, changeInputValue }) {
   );
 }
 
-HeaderController.propTypes = {
+HeaderContent.propTypes = {
   submit: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   changeInputValue: PropTypes.func.isRequired,
 };
 
-export default HeaderController;
+export default HeaderContent;

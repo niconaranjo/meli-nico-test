@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     'max-len': [1, { code: 80 }, { ignoreUrls: true }],
     'react/destructuring-assignment': ['off'],
+    'react/forbid-prop-types': ['off'],
   },
 };

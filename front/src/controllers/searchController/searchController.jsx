@@ -1,10 +1,13 @@
 import React from 'react';
-import classes from './SearchLayout.module.css';
-import HeaderController from '../../controllers/header/header';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import classes from './searchController.module.css';
+import HeaderContent from '../../components/header/header';
 
-class SearchLayout extends React.Component {
-  constructor() {
-    super();
+class SearchController extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       query: '',
@@ -28,13 +31,15 @@ class SearchLayout extends React.Component {
   submitHandler(event) {
     event.preventDefault();
 
-    console.log(this);
+    if (this.state.query.length > 2) {
+      this.props.history.push(`/items?search=${this.state.query}`);
+    }
   }
 
   render() {
     return (
-      <header id="header" className={classes.searchLayout} role="banner">
-        <HeaderController
+      <header id="header" className={classes.searchController} role="banner">
+        <HeaderContent
           submit={this.submitHandler}
           inputValue={this.state.query}
           changeInputValue={
@@ -46,4 +51,8 @@ class SearchLayout extends React.Component {
   }
 }
 
-export default SearchLayout;
+SearchController.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+export default withRouter(SearchController);

@@ -1,10 +1,20 @@
 import React from 'react';
-import SearchLayout from './layout/searchLayout/SearchLayout';
+import { Route, Switch } from 'react-router-dom';
+
+import Layout from './layout/layout';
+import ContentController from
+  './controllers/contentController/contentController';
 
 function App() {
   return (
     <>
-      <SearchLayout />
+      <Layout>
+        <Switch>
+          <Route path="/" exact />
+          <Route path="/items" component={ContentController} />
+          <Route render={() => <h1>404: page not found</h1>} />
+        </Switch>
+      </Layout>
     </>
   );
 }
