@@ -1,0 +1,7 @@
+@value colors: "../../styles/constants/colors.module.css";
+@value MeliYellow from colors;
+
+
+.searchLayout {
+  background-color: MeliYellow;
+}

@@ -1,4 +1,4 @@
-# Mercado Libre Test :D
+# Mercado Libre Test
 
 ##### Description
 This is the test I did for Mercado Libre recruitment process. Take into account that the structure used here is a _monorepo_ used with `yarn` workspaces, please follow the next steps to run the project.
@@ -21,7 +21,7 @@ Make sure you use this versions or higher versions to run the project
 5. In other **tab** of your favorite command line go to _front_ folder.
 6. Once there run `yarn run front`.
 7. Finally go to your browser and open `http://localhost:3000/`
-8. There you go now you can enjoy this awesome development! :)
+8. There you go now you can enjoy this awesome development!
 
 ---
 #### File Structure
