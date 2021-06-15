@@ -11,7 +11,8 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/" exact />
-          <Route path="/items" component={ContentController} />
+          <Route path="/items" exact component={ContentController} />
+          <Route path="/items/:id" exact component={ContentController} />
           <Route render={() => <h1>404: page not found</h1>} />
         </Switch>
       </Layout>

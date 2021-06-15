@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import classes from './searchController.module.css';
 import HeaderContent from '../../components/header/header';

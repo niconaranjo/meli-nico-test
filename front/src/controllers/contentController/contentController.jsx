@@ -1,91 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Spinner from '../../components/UI/spinner/spinner';
 
-class ContentController extends Component {
-
-  static buildSearchQuery(queryString) {
+const ContentController = (props) => {
+  const buildSearchQuery = (queryString) => {
     if (queryString) {
       return queryString.split('=')[1];
     }
     return '';
-  }
+  };
 
-  constructor(props) {
-    super(props);
+  const initialSearchWord = buildSearchQuery(props.location.search);
 
-    this.state = {
-      searchWord: ContentController.buildSearchQuery(
-        this.props.location.search,
-      ),
-      items: {},
-      author: {},
-      categories: [],
-    };
-  }
+  const initialState = {
+    items: {},
+    author: {},
+    categories: [],
+  };
 
-  componentDidMount() {
-    this.getData();
-    console.log(this.state)
-  }
+  const [state, updateState] = useState({ ...initialState });
+  const [searchQuery, updateSearchQuery] = useState(initialSearchWord);
+  const [isLoading, updateIsLoading] = useState(false);
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState.searchWord !== this.state.searchWord)
-    if (nextState.searchWord !== this.state.searchWord) {
-      return true;
-    }
-
-    const nextSearch = ContentController.buildSearchQuery(
-      nextProps.location.search,
-    );
-    const prevSearch = ContentController.buildSearchQuery(
-      this.props.location.search,
-    );
-
-    if (nextSearch !== prevSearch) {
-      this.setState(() => ({
-        searchWord: nextSearch,
-      }));
-      return true;
-    }
-    return false;
-  }
-
-  getSnapshotBeforeUpdate(prevProps) {
-    return {
-      propsChanged:
-      ContentController
-        .buildSearchQuery(prevProps.location.search)
-        !== ContentController
-          .buildSearchQuery(this.props.location.search),
-    };
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('updated', snapshot.propsChanged)
-    if (snapshot.propsChanged) {
-      this.getData();
-    }
-  }
-
-  getData() {
+  const getData = () => {
+    updateIsLoading(true);
     //http://localhost:8080/api/items?q=
-    axios.get(`http://localhost:8080/api/items?q=${this.state.searchWord}`)
+    axios
+      .get(`http://localhost:8080/api/items?q=${searchQuery}`)
       .then((response) => {
         const { data } = response;
 
-        this.setState(() => ({
+        updateState(() => ({
           items: data.items,
           author: data.autor,
           categories: data.categories,
         }));
-      });
-  }
 
-  render() {
-    return <h1>hi</h1>;
-  }
-}
+        updateIsLoading(false);
+      });
+
+    console.log('get Data');
+  };
+
+  useEffect(() => {
+    updateSearchQuery(buildSearchQuery(props.location.search));
+  }, [props.location.search]);
+
+  useEffect(() => {
+    getData();
+  }, [searchQuery]);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+
+  return <>{isLoading && <Spinner />}</>;
+};
 
 ContentController.propTypes = {
   location: PropTypes.object.isRequired,
