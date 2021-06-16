@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Spinner from '../../components/UI/spinner/spinner';
+import SearchListItem from '../../components/searchListItem/searchListItem';
+
+import classes from './contentController.module.css';
 
 const ContentController = (props) => {
   const buildSearchQuery = (queryString) => {
@@ -21,11 +24,10 @@ const ContentController = (props) => {
 
   const [state, updateState] = useState({ ...initialState });
   const [searchQuery, updateSearchQuery] = useState(initialSearchWord);
-  const [isLoading, updateIsLoading] = useState(false);
+  const [isLoading, updateIsLoading] = useState(true);
 
   const getData = () => {
     updateIsLoading(true);
-    //http://localhost:8080/api/items?q=
     axios
       .get(`http://localhost:8080/api/items?q=${searchQuery}`)
       .then((response) => {
@@ -39,8 +41,6 @@ const ContentController = (props) => {
 
         updateIsLoading(false);
       });
-
-    console.log('get Data');
   };
 
   useEffect(() => {
@@ -51,11 +51,18 @@ const ContentController = (props) => {
     getData();
   }, [searchQuery]);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  const BuildItems = () => {
+    if (!state.items) return (<h1> No data </h1>);
 
-  return <>{isLoading && <Spinner />}</>;
+    return <SearchListItem items={state.items} />;
+  };
+
+  return (
+    <section className={classes.searchContent}>
+      {isLoading && <Spinner startSearch={false} />}
+      {!isLoading && BuildItems()}
+    </section>
+  );
 };
 
 ContentController.propTypes = {

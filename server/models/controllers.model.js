@@ -79,9 +79,11 @@ const buildCategories = (filters) => {
     filters.length == 0) return [];
 
   return filters
-    .filter((filter) => filter.name === 'Categorías')
-    .map((filter) => filter['values']).flat()
-    .map((filter) => filter['path_from_root']).flat()
+    .filter((filterData) => filterData.name === 'Categorías')
+    .map((filterData) => filterData['values'])
+    .reduce((acc, elem) => acc.concat(elem))
+    .map((filterData) => filterData['path_from_root'])
+    .reduce((acc, elem) => acc.concat(elem))
     .reduce((acc, elem) => {
       acc.push(elem.name);
       return acc;
@@ -97,6 +99,7 @@ const buildSearchProduct = (product) => {
     picture: product.thumbnail.toString(),
     condition: product.condition.toString(),
     'free_shipping': product.shipping ? product.shipping.free_shipping : false,
+    city: product.seller_address.city.name,
   }
 }
 

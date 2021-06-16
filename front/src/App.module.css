@@ -1,1 +1,8 @@
 /* Add some global style here */
+@value White from './styles/constants/colors.module.css';
+@value Layout from './styles/constants/layout.module.css';
+@value layout from Layout;
+
+section {
+  background-color: White;
+}

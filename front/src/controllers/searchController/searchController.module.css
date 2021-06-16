@@ -1,7 +1,6 @@
 @value colors: "../../styles/constants/colors.module.css";
 @value MeliYellow from colors;
 
-
 .searchController {
   background-color: MeliYellow;
 }

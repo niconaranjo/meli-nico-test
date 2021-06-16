@@ -1,0 +1,76 @@
+@value Breakpoints: "../../../styles/constants/breakpoints.module.css";
+@value small, medium, large from Breakpoints;
+
+
+.start-section__container {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.start-section__logo {
+  align-self: center;
+  margin-right: 0;
+  margin-bottom: 16px;
+}
+
+.start-section__text h2 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+
+.start-section__text li {
+  color: #000000;
+  font-weight: 300;
+  line-height: 19.696px;
+  margin: 0px 0px 8px 18px;
+  text-align: left;
+}
+
+@media medium {
+  .start-section__container {
+    padding: 42px 40px 32px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .start-section__logo {
+    margin-right: 48px;
+    margin-bottom: 0;
+  }
+
+  .start-section__text h2 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  .start-section__text li {
+    margin: 0px 0px 3px 18px;
+  }
+}
+
+@media large {
+  .start-section__container {
+    padding: 42px 40px 32px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .start-section__logo {
+    margin-right: 48px;
+    margin-bottom: 0;
+  }
+
+  .start-section__text h2 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  .start-section__text li {
+    margin: 0px 0px 3px 18px;
+  }
+}

@@ -1,54 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import classes from './searchController.module.css';
 import HeaderContent from '../../components/header/header';
 
-class SearchController extends React.Component {
-  constructor(props) {
-    super(props);
+const SearchController = (props) => {
+  const initialState = {
+    query: '',
+  };
 
-    this.state = {
-      query: '',
-    };
+  const [state, updateState] = useState({ ...initialState });
 
-    this.submitHandler = this.submitHandler.bind(this);
-    this.inputChangedHandler = this.inputChangedHandler.bind(this);
-  }
-
-  inputChangedHandler(event) {
-    const oldQuery = this.state.query;
+  const inputChangedHandler = (event) => {
+    const oldQuery = state.query;
     const newQuery = event.target.value;
 
     if (oldQuery !== newQuery) {
-      this.setState(() => ({
+      updateState(() => ({
         query: event.target.value,
       }));
     }
-  }
+  };
 
-  submitHandler(event) {
+  const submitHandler = (event) => {
     event.preventDefault();
 
-    if (this.state.query.length > 2) {
-      this.props.history.push(`/items?search=${this.state.query}`);
+    if (state.query.length > 0) {
+      props.history.push(`/items?search=${state.query}`);
     }
-  }
+  };
 
-  render() {
-    return (
-      <header id="header" className={classes.searchController} role="banner">
-        <HeaderContent
-          submit={this.submitHandler}
-          inputValue={this.state.query}
-          changeInputValue={
-            (event) => this.inputChangedHandler(event)
-          }
-        />
-      </header>
-    );
-  }
-}
+  return (
+    <header id="header" className={classes.searchController} role="banner">
+      <HeaderContent
+        submit={submitHandler}
+        inputValue={state.query}
+        changeInputValue={
+          (event) => inputChangedHandler(event)
+        }
+      />
+    </header>
+  );
+};
 
 SearchController.propTypes = {
   history: PropTypes.object.isRequired,

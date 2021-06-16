@@ -1,0 +1,22 @@
+@value Breakpoints: "../../styles/constants/breakpoints.module.css";
+@value small, medium, large from Breakpoints;
+
+.search-section {
+  flex-direction: row;
+  display: flex;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+  padding: 24px 20px 16px;
+
+}
+
+@media large {
+  .search-section {
+    margin-top: 48px;
+    padding: 42px 40px 32px;
+
+  }
+}
+

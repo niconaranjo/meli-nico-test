@@ -12,9 +12,10 @@
   ],
   "scripts": {
     "server": "nodemon ./server/main.js",
-    "filetree": "filetree"
+    "install:server": "cd server & yarn install",
+    "install:front": "cd front & yarn install"
   },
-  "devDependencies": {
-    "file-tree-generator": "^1.0.1"
+  "dependencies": {
+    "yarn": "^1.22.10"
   }
 }
