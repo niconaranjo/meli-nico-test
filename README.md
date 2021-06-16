@@ -16,10 +16,10 @@ Make sure you use these versions or higher versions to run the project
 
 1. Run `yarn install` in each folder (server and Front)
 2. Once installed go to the folder _server_ ex. `cd ./server/`
-3. On the folder run `yarn run dev` will start the dev project.
+3. On the folder run `yarn run server` will start the dev project.
 4. Once it runs go to your browser and type the following `http://localhost:8080/api/`
 5. In the other **tab** of your favorite command line go to _front_ folder.
-6. Once there run `yarn run front`.
+6. Once there run `yarn run dev`.
 7. Finally go to your browser and open `http://localhost:3000/`
 8. There you go now you can enjoy this awesome development!
 
