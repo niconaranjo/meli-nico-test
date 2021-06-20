@@ -4,7 +4,7 @@ import classes from './searchItem.module.css';
 import envioGratis from '../../../assets/ic_shipping.svg';
 
 const SearchItem = (props) => {
-  const isFree = props.item.free_shipping;
+  const isLast = props['item-index'] === props.length - 1;
 
   const price = new Intl.NumberFormat(props.item.price.currency, {
     style: 'currency',
@@ -12,7 +12,10 @@ const SearchItem = (props) => {
   }).format(props.item.price.amount);
 
   return (
-    <a href={`items/${props.item.id}`} className={classes.searchItem}>
+    <a
+      href={`items/${props.item.id}`}
+      className={`${classes.searchItem} ${isLast ? classes.isLast : ''}`}
+    >
       <div className={classes.searchItem__image}>
         <img src={props.item.picture} alt={props.item.title} />
       </div>
@@ -21,11 +24,9 @@ const SearchItem = (props) => {
           <div
             className={classes['searchItem__headerContainer--header__price']}
           >
-            <h2>
-              {`${price}`}
-            </h2>
+            <h2>{`${price}`}</h2>
             {props.item.free_shipping && (
-              <object data={envioGratis} aria-label="Envio Gratis" />
+              <img src={envioGratis} aria-label="Envio Gratis" />
             )}
           </div>
           <p>{props.item.city}</p>
@@ -40,6 +41,8 @@ const SearchItem = (props) => {
 
 SearchItem.propTypes = {
   item: PropTypes.object.isRequired,
+  'item-index': PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
 };
 
 export default SearchItem;

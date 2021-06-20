@@ -1,4 +1,7 @@
 .searchContent {
-  margin-top: 8px;
+  margin-top: 16px;
   min-height: 400px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
