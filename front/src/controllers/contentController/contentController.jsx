@@ -55,7 +55,7 @@ const ContentController = (props) => {
   }, [searchQuery]);
 
   const BuildItems = () => {
-    if (!state.items.length === 0) return (<h1> No data </h1>);
+    if (!state.items.length === 0) return <h1> No data </h1>;
 
     return <SearchListItem items={state.items} />;
   };
@@ -69,7 +69,11 @@ const ContentController = (props) => {
   return (
     <>
       {!isLoading && BuildBreadcrumb()}
-      <section className={classes.searchContent}>
+      <section
+        className={`${classes.searchContent} ${
+          isLoading ? classes.activeSpinner : ''
+        }`}
+      >
         {isLoading && <Spinner startSearch={state.searchFound} />}
         {!isLoading && BuildItems()}
       </section>
