@@ -14,8 +14,13 @@
   cursor: pointer;
 }
 
+.searchItem.isLast {
+  border-bottom: none;
+}
+
 .searchItem__image {
   margin-right: 16px;
+  max-height: 180px;
 }
 
 .searchItem__image img {
@@ -42,14 +47,13 @@
 .searchItem__headerContainer--header__price {
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
 }
 
 .searchItem__headerContainer--header h2 {
   font-size: 24px;
 }
 
-.searchItem__headerContainer--header object {
+.searchItem__headerContainer--header img {
   width: 20px;
   margin-left: 8px;
 }
@@ -86,8 +90,8 @@
 
 @media large {
   .searchItem {
-    height: 200px;
-    max-height: 200px;
+    height: 212px;
+    max-height: 212px;
   }
 
   .searchItem__image img {

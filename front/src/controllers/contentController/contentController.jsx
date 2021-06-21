@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Spinner from '../../components/UI/spinner/spinner';
 import SearchListItem from '../../components/searchListItem/searchListItem';
+import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 
 import classes from './contentController.module.css';
 
@@ -17,6 +18,7 @@ const ContentController = (props) => {
   const initialSearchWord = buildSearchQuery(props.location.search);
 
   const initialState = {
+    searchFound: false,
     items: {},
     author: {},
     categories: [],
@@ -34,6 +36,7 @@ const ContentController = (props) => {
         const { data } = response;
 
         updateState(() => ({
+          searchFound: true,
           items: data.items,
           author: data.autor,
           categories: data.categories,
@@ -52,16 +55,29 @@ const ContentController = (props) => {
   }, [searchQuery]);
 
   const BuildItems = () => {
-    if (!state.items) return (<h1> No data </h1>);
+    if (!state.items.length === 0) return <h1> No data </h1>;
 
     return <SearchListItem items={state.items} />;
   };
 
+  const BuildBreadcrumb = () => {
+    if (!state.searchFound) return '';
+
+    return <Breadcrumbs categories={state.categories} search={searchQuery} />;
+  };
+
   return (
-    <section className={classes.searchContent}>
-      {isLoading && <Spinner startSearch={false} />}
-      {!isLoading && BuildItems()}
-    </section>
+    <>
+      {!isLoading && BuildBreadcrumb()}
+      <section
+        className={`${classes.searchContent} ${
+          isLoading ? classes.activeSpinner : ''
+        }`}
+      >
+        {isLoading && <Spinner startSearch={state.searchFound} />}
+        {!isLoading && BuildItems()}
+      </section>
+    </>
   );
 };
 

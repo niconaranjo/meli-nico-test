@@ -1,0 +1,29 @@
+.breadcrumb {
+  color: #666;
+  font-size: 14px;
+  margin-top: 16px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.breadcrumb li {
+  display: inline;
+  margin-left: 8px;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.breadcrumb li:not(:last-of-type)::after {
+  content: ' ';
+  display: inline-block;
+  border-bottom: 1px solid #666;
+  border-right: 1px solid #666;
+  height: 6px;
+  width: 6px;
+  transform: rotate(-45deg);
+  margin: auto 5px auto 5px;
+  left: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
