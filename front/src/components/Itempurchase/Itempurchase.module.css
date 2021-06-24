@@ -1,0 +1,45 @@
+.Itempurchase {
+  margin: 32px 24px;
+}
+
+.Itempurchase__eyebrow {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.Itempurchase__eyebrow img{
+  width: 20px;
+  margin-left: 8px;
+}
+
+.Itempurchase__title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 32px;
+  max-width: 60%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Itempurchase__price {
+  font-size: 46px;
+  color: #333;
+  margin-bottom: 32px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Itempurchase__button {
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  line-height: 48px;
+  background-color: #3483FA;
+  color: #EEE;
+  width: 60%;
+  padding: 0 24px;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}

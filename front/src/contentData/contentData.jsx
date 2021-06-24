@@ -12,8 +12,21 @@ const MeliData = {
         'Escribe tu búsqueda en el campo que figura en la parte superior de la pantalla.',
         'Navega por categorías de productos para encontrar el producto que buscas.',
       ],
+      HEADING_ERROR: 'No se encontraron productos',
+      HELP_TEXT_ERROR: [
+        'Revisá la ortografía de la palabra.',
+        'Utilizá palabras más genéricas o menos palabras.',
+        'Navegá por las categorías para encontrar un producto similar',
+      ],
     },
-
+  },
+  ITEM: {
+    NEW_CONDITION: 'new',
+    BUY_BUTTON: 'Comprar',
+    SOLD: 'vendidos',
+    NEW: 'Nuevo',
+    USED: 'Usado',
+    PRODUCT_DESCRIPTION: 'Descripción del producto'
   },
 };
 

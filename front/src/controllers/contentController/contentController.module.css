@@ -9,3 +9,8 @@
 .searchContent.activeSpinner {
   margin-top: 48px;
 }
+
+.searchContent.noData {
+  margin-top: 48px;
+  min-height: auto;
+}

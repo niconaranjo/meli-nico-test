@@ -4,6 +4,7 @@ import axios from 'axios';
 import Spinner from '../../components/UI/spinner/spinner';
 import SearchListItem from '../../components/searchListItem/searchListItem';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
+import StartSection from '../../components/UI/sections/start.sections';
 
 import classes from './contentController.module.css';
 
@@ -55,13 +56,13 @@ const ContentController = (props) => {
   }, [searchQuery]);
 
   const BuildItems = () => {
-    if (!state.items.length === 0) return <h1> No data </h1>;
+    if (state.items.length === 0) return <StartSection error />;
 
     return <SearchListItem items={state.items} />;
   };
 
   const BuildBreadcrumb = () => {
-    if (!state.searchFound) return '';
+    if (!state.searchFound || state.items.length === 0) return '';
 
     return <Breadcrumbs categories={state.categories} search={searchQuery} />;
   };
@@ -72,6 +73,8 @@ const ContentController = (props) => {
       <section
         className={`${classes.searchContent} ${
           isLoading ? classes.activeSpinner : ''
+        } ${
+          state.items.length === 0 ? classes.noData : ''
         }`}
       >
         {isLoading && <Spinner startSearch={state.searchFound} />}

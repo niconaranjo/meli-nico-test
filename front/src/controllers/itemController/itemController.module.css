@@ -1,0 +1,39 @@
+.itemContent {
+  margin-top: 48px;
+  min-height: 400px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchContent.activeSpinner {
+  margin-top: 48px;
+}
+
+.itemContent__container {
+  display: flex;
+}
+
+
+.itemContent__container--left-row {
+  max-width: 60%;
+}
+
+.itemContent__container--right-row {
+  max-width: 40%;
+}
+
+.itemContent__container--description {
+  margin: 16px 32px;
+}
+.itemContent__container--description h3 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.itemContent__container--description p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+}

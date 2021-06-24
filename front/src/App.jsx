@@ -7,6 +7,7 @@ import Layout from './layout/layout';
 import ContentController from
   './controllers/contentController/contentController';
 import SectionHandler from './components/sectionHandler/sectionHandler';
+import ItemController from './controllers/itemController/itemController';
 
 function App() {
   return (
@@ -15,7 +16,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={SectionHandler} />
           <Route path="/items" exact component={ContentController} />
-          <Route path="/items/:id" exact component={ContentController} />
+          <Route
+            path="/items/:id"
+            exact
+            component={ItemController}
+          />
           <Route render={() => <h1>404: page not found</h1>} />
         </Switch>
       </Layout>
